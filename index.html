@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>포도알 목표장</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell" aria-live="polite">
+    <section class="page page-start is-active" data-page="start">
+      <header class="page-header">
+        <p class="eyebrow">오늘의 작은 연습</p>
+        <h1>포도알 목표장</h1>
+        <p class="intro">한 번 해낼 때마다 포도알을 한 알씩 칠해 보세요.</p>
+      </header>
+
+      <article class="continue-card" id="continueCard" hidden>
+        <div>
+          <p class="card-label">진행 중인 목표</p>
+          <h2 id="continueGoal">저장된 목표</h2>
+          <p id="continueMeta">0 / 0알</p>
+        </div>
+        <button class="small-button" type="button" id="continueButton">이어서 하기</button>
+      </article>
+
+      <form class="paper-form" id="goalForm">
+        <label>
+          <span>목표</span>
+          <input id="goalInput" type="text" autocomplete="off" placeholder="예: 매일 글쓰기" required>
+        </label>
+
+        <label>
+          <span>수행 과제</span>
+          <input id="taskInput" type="text" autocomplete="off" placeholder="예: 글 20분 쓰기" required>
+        </label>
+
+        <fieldset>
+          <legend>포도알 개수</legend>
+          <div class="count-options">
+            <label><input type="radio" name="grapeCount" value="7" checked><span>7개</span></label>
+            <label><input type="radio" name="grapeCount" value="14"><span>14개</span></label>
+            <label><input type="radio" name="grapeCount" value="30"><span>30개</span></label>
+            <label class="custom-count">
+              <input type="radio" name="grapeCount" value="custom">
+              <span>직접</span>
+              <input id="customCount" type="number" min="1" max="60" inputmode="numeric" placeholder="숫자">
+            </label>
+          </div>
+        </fieldset>
+
+        <button class="primary-button" type="submit">포도송이 만들기</button>
+      </form>
+    </section>
+
+    <section class="page page-progress" data-page="progress">
+      <header class="progress-header">
+        <button class="text-button" type="button" id="backToStart">처음으로</button>
+        <p class="eyebrow">포도알 색칠</p>
+        <h1 id="progressGoal">목표명</h1>
+        <p id="progressTask">수행 과제</p>
+        <div class="progress-line" aria-label="현재 진행률">
+          <span id="progressText">0 / 0알</span>
+          <strong id="progressPercent">0%</strong>
+        </div>
+      </header>
+
+      <div class="grape-wrap">
+        <div class="leaf leaf-left" aria-hidden="true"></div>
+        <div class="leaf leaf-right" aria-hidden="true"></div>
+        <div class="stem" aria-hidden="true"></div>
+        <div class="grape-bunch" id="progressGrapes" aria-label="포도송이"></div>
+        <div class="crayon-cursor" id="crayonCursor" aria-hidden="true"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="primary-button" type="button" id="fillButton">포도알 한 알 색칠하기</button>
+        <button class="secondary-button" type="button" id="undoButton">한 알 되돌리기</button>
+      </div>
+    </section>
+
+    <section class="page page-complete" data-page="complete">
+      <header class="page-header">
+        <p class="eyebrow">완성된 포도송이</p>
+        <h1>끝까지 채웠어요</h1>
+        <p class="intro">차곡차곡 쌓인 시간이 포도송이처럼 남았습니다.</p>
+      </header>
+
+      <div class="grape-wrap complete-wrap">
+        <div class="leaf leaf-left" aria-hidden="true"></div>
+        <div class="leaf leaf-right" aria-hidden="true"></div>
+        <div class="stem" aria-hidden="true"></div>
+        <div class="grape-bunch" id="completeGrapes" aria-label="완성된 포도송이"></div>
+      </div>
+
+      <section class="result-note">
+        <p id="completeGoal">목표명</p>
+        <strong id="completeCount">총 0회 수행</strong>
+      </section>
+
+      <div class="action-row">
+        <button class="primary-button" type="button" id="restartSame">같은 목표로 다시 시작하기</button>
+        <button class="secondary-button" type="button" id="newGoal">새 목표 만들기</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
